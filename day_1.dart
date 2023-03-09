@@ -45,6 +45,9 @@ void main(List<String> args) {
   print(div1);
   print(div1.toInt());
 
+  // to print integer part only we can use ~ symbol with division as well
+  print(10 ~/ 2);
+
   var s = "1";
   int.parse(s);
   print(s);

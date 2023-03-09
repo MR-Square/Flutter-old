@@ -1,5 +1,24 @@
 import 'dart:io';
 
+// parameterised function
+void FullName(String fName, String lName) {
+  print(fName + " " + lName);
+}
+
+// Named parameter
+void printFullName({required String fName, required String lName}) {
+  // required key indicates that the parameter must be passed when the function is called.
+  print(fName);
+  print(lName);
+}
+
+// Optional parameter
+void CompleteName(String fName, String lName, [String? fatherName]) {
+  print("first name = $fName");
+  print("last name = $lName");
+  print("father name = $fatherName");
+}
+
 void main(List<String> args) {
   // Loops
   int no = 1;
@@ -27,8 +46,6 @@ void main(List<String> args) {
     if (i == 6) break;
     print(i);
   }
-
-  
 }
 
 /*

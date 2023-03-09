@@ -27,4 +27,16 @@ void main(List<String> args) {
     if (i == 6) break;
     print(i);
   }
+
+  
 }
+
+/*
+String? name;
+here value of name can be either string or null
+
+data type of input is always string?
+var my_input = stdin.readLineSync();
+no = int.parse(my_input!);
+here since .parse method take string only,so we are converting String? to String
+*/

@@ -1,0 +1,15 @@
+What is a Widget?
+It is a UI element which can be seen or rendered into app screen.
+e.g: Text, Image, Button
+
+Widget: Text
+Properties: data,text color, text alignment, font size, font weight.
+
+Widget: Image
+Properties: image,height, width, opacity, fit.
+
+Widget: Button
+Properties: text, height, width, color, enabed, onPressed.
+
+Widget: Icon
+Properties: icon, iconColor, width, height.

@@ -32,3 +32,28 @@ It is the starting point of android application.
 What is Scaffold()?
 It is sub root of the application, or we can say it is the trunck of the root.
 It implements the basic material design visual layout structure. This class provide APIs for showing drawers, appbar, floating action button, bottom sheets and many more.
+
+|      Stateless Widget                    |       Stateful Widget                                    |
+|  Widget which can not change its value.  |   Widget which can change its value or have a state.     |
+|  e.g: App Title text                     |   e.g: Progress indicator, counter text.                 |
+
+
+Multiple child widgets:
+Row:
+    Horizontal arrangement of childs.                                    A1     A2     A3     
+    here A1 A2 A3 is a Row                                               B1     B2     B3
+.                                                                        C1     C2     C3
+Column:
+    Vertical arrangement of childs.
+    Here A1 B1 C1 is a Column.
+
+We saw the following widgets:
+Text()
+  Properties: String, style
+TextStyle() 
+  Properties:fontSize, color, letterSpacing, backgroundColor
+Center()
+  Properties: Child,
+Row()
+  Properties: mainAxisAlignment, Children
+Icon()

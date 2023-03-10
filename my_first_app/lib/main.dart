@@ -26,13 +26,23 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(),
-        body: const Text(
-          "My first app",
-          style: TextStyle(
-            fontSize: 30.0,
-            color: Color.fromARGB(255, 223, 95, 56),
-            letterSpacing: 5,
-          ),
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.star),
+            Center(
+              child: Text(
+                "My first app",
+                style: TextStyle(
+                  fontSize: 30.0,
+                  color: Color.fromARGB(255, 223, 95, 56),
+                  letterSpacing: 5,
+                  backgroundColor: Colors.yellow,
+                ),
+              ),
+            ),
+            Icon(Icons.star),
+          ],
         ),
       ),
     );

@@ -13,3 +13,22 @@ Properties: text, height, width, color, enabed, onPressed.
 
 Widget: Icon
 Properties: icon, iconColor, width, height.
+
+
+                Root Widget
+                /       \
+               /         \
+              /           \
+        App Bar         Container
+        /   \                   \
+       /     \                   \
+      /       \                   \
+    Text     Icon                Image
+
+
+What is MaterialApp?
+It is the starting point of android application.
+
+What is Scaffold()?
+It is sub root of the application, or we can say it is the trunck of the root.
+It implements the basic material design visual layout structure. This class provide APIs for showing drawers, appbar, floating action button, bottom sheets and many more.

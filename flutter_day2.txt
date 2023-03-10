@@ -1,1 +1,28 @@
 Title : Making app interactive
+
+1) Button:
+Button is any graphical element that provides the user a simple way to interact or trigger an event.
+
+2) Button widget in flutter
+Text Button, Elevated Button, Outlined Button.
+
+3) How to add elevated button?
+ElevatedButton(
+    onPressed: function,
+    child: Any widget,
+)
+this is the required syntax to add elevated button.
+
+4) How to add outlined button?
+OutlinedButton(
+    onPressed: function,
+    child: Any widget,
+)
+this is the required syntax to add elevated button.
+
+5) What is stateful widget?
+a widget that has a mutable state.
+
+6) setState()
+it is basically used to rebuild the widgets.(it calls build method with new values of state)
+it takes one argument which must be a function.

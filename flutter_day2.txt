@@ -26,3 +26,28 @@ a widget that has a mutable state.
 6) setState()
 it is basically used to rebuild the widgets.(it calls build method with new values of state)
 it takes one argument which must be a function.
+
+7) how to add checkbox?
+To add a checkbox we can use CheckBox() widget
+Checkbox(
+      value: isCheck,
+      onChanged: (value) {
+        isCheck = value!;
+        setState(() {
+        });
+      },
+    ),
+
+value is a property which takes either true or flase.
+(here isCheck is a variable of boolean datatype.)
+onChanged property accepts a function.
+(that function takes one bool type argument)
+
+8) Note taking app
+an application to take note of something important.
+Features:
+    Add notes
+    View notes
+    Edit notes
+    Delete notes
+    Search notes

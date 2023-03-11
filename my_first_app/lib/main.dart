@@ -14,6 +14,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // state variable
   String mytext = "My first App";
+  bool isCheck = false;
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +70,26 @@ class _MyAppState extends State<MyApp> {
                 });
               },
               child: const Text("click me"),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Checkbox(
+                  value: isCheck,
+                  onChanged: (value) {
+                    isCheck = value!;
+                    setState(() {
+                      // if (isCheck == false) {
+                      //   isCheck = true;
+                      // } else {
+                      //   isCheck = false;
+                      // }
+                      // print(isCheck);
+                    });
+                  },
+                ),
+                const Text("You agree"),
+              ],
             ),
           ],
         ),

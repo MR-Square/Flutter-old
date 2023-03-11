@@ -79,12 +79,6 @@ class _MyAppState extends State<MyApp> {
                   onChanged: (value) {
                     isCheck = value!;
                     setState(() {
-                      // if (isCheck == false) {
-                      //   isCheck = true;
-                      // } else {
-                      //   isCheck = false;
-                      // }
-                      // print(isCheck);
                     });
                   },
                 ),

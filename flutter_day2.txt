@@ -51,3 +51,21 @@ Features:
     Edit notes
     Delete notes
     Search notes
+
+9) In notes app we saw the following:
+different files for different pages.
+backgroundColor property of app bar.
+Container()
+TextField(
+  decoration: InputDecoration(
+    hintText: "search notes",
+    prefixIcon: Icon(Icons.search),
+    border: InputBorder.none,
+  ),
+),
+Padding()
+decoration: BoxDecoration(
+  borderRadius: BorderRadius.circular(5.0),
+  color: Colors.grey[200],
+)
+

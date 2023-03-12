@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/models/note.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,6 +10,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final searchController = TextEditingController();
+  final searchFocusNode = FocusNode();
+  List<Note> notes = [
+    Note(
+        title: "Note 1",
+        note: "This is my first note",
+        updatedAt: DateTime.now()),
+    Note(
+        title: "Note 2",
+        note: "This is my second note",
+        updatedAt: DateTime.now()),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +45,7 @@ class _HomePageState extends State<HomePage> {
               ),
               child: TextField(
                 controller: searchController,
+                focusNode: searchFocusNode,
                 onChanged: (value) {
                   // print(value);
                   setState(() {});
@@ -40,9 +54,18 @@ class _HomePageState extends State<HomePage> {
                   hintText: "search notes",
                   prefixIcon: const Icon(Icons.search),
                   suffixIcon: searchController.text.isNotEmpty
-                      ? IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.close),
+                      ? ClipOval(
+                          child: Material(
+                            color: Colors.transparent,
+                            child: IconButton(
+                              onPressed: () {
+                                searchController.clear();
+                                searchFocusNode.unfocus();
+                                setState(() {});
+                              },
+                              icon: const Icon(Icons.close),
+                            ),
+                          ),
                         )
                       : null,
                   border: InputBorder.none,

@@ -1,5 +1,5 @@
+To create our own model we simply create a folder named as "models" in our lib folder. Then we create different files for different models.
 In this vid we saw the following widgets and properties
-
 1) OutlineInputBorder()
     This is the value for focusedBorder property of InputDecoration() widget
     focusedBorder property is used to decorate the border on input field when it is focused.
@@ -13,3 +13,13 @@ In this vid we saw the following widgets and properties
 
 5) onChanged:
     in TextField()
+
+6) FocusNode()
+    used in TextField()
+
+7) focusNode:
+    property of FocusNode()
+
+8) Material()
+
+9) ClipOval()

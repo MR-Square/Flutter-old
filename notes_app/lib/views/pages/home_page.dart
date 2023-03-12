@@ -8,6 +8,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,11 +30,27 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(5.0),
                 color: Colors.grey[200],
               ),
-              child: const TextField(
+              child: TextField(
+                controller: searchController,
+                onChanged: (value) {
+                  // print(value);
+                  setState(() {});
+                },
                 decoration: InputDecoration(
                   hintText: "search notes",
-                  prefixIcon: Icon(Icons.search),
+                  prefixIcon: const Icon(Icons.search),
+                  suffixIcon: searchController.text.isNotEmpty
+                      ? IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.close),
+                        )
+                      : null,
                   border: InputBorder.none,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
                   fillColor: Colors.grey,
                 ),
               ),

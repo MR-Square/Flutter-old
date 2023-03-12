@@ -1,0 +1,15 @@
+In this vid we saw the following widgets and properties
+
+1) OutlineInputBorder()
+    This is the value for focusedBorder property of InputDecoration() widget
+    focusedBorder property is used to decorate the border on input field when it is focused.
+
+2) IconButton()
+
+3) controller:
+    property of TextField()
+
+4) TextEditingController()
+
+5) onChanged:
+    in TextField()

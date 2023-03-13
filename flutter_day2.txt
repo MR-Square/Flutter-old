@@ -4,6 +4,7 @@ Title : Making app interactive
 Button is any graphical element that provides the user a simple way to interact or trigger an event.
 
 2) Button widget in flutter
+There are so many types of buttons avaiable in flutter such as:
 Text Button, Elevated Button, Outlined Button.
 
 3) How to add elevated button?
@@ -29,7 +30,7 @@ it takes one argument which must be a function.
 
 7) how to add checkbox?
 To add a checkbox we can use CheckBox() widget
-Checkbox(
+CheckBox(
       value: isCheck,
       onChanged: (value) {
         isCheck = value!;
@@ -38,7 +39,7 @@ Checkbox(
       },
     ),
 
-value is a property which takes either true or flase.
+value is a property that takes either true or flase.
 (here isCheck is a variable of boolean datatype.)
 onChanged property accepts a function.
 (that function takes one bool type argument)
@@ -53,17 +54,31 @@ Features:
     Search notes
 
 9) In notes app we saw the following:
+
 different files for different pages.
-backgroundColor property of app bar.
+
+backgroundColor:
+  property of AppBar()
+  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+
 Container()
-TextField(
-  decoration: InputDecoration(
-    hintText: "search notes",
-    prefixIcon: Icon(Icons.search),
-    border: InputBorder.none,
+  it takes one required argument "child: any widget"
+
+TextField()
+  A text field lets the user enter text, either with hardware keyboard or with an onscreen keyboard.
+  it calls the onChanged callback whenever the user changes the text in the field.
+  To control the text that is displayed in the text field, use the controller.
+  You can use the decoration property to control the decoration.
+  TextField(
+    decoration: InputDecoration(
+      hintText: "search notes",
+      prefixIcon: Icon(Icons.search),
+      border: InputBorder.none,
+    ),
   ),
-),
+
 Padding()
+
 decoration: BoxDecoration(
   borderRadius: BorderRadius.circular(5.0),
   color: Colors.grey[200],

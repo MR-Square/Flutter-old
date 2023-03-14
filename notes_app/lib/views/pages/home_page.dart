@@ -12,6 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final searchController = TextEditingController();
   final searchFocusNode = FocusNode();
+  var isSearching = false;
   List<Note> notes = [];
   /*Note(
         title: "Note 1",
@@ -56,7 +57,7 @@ class _HomePageState extends State<HomePage> {
           if (result != null) {
             Note note = result;
             if (note.title!.isNotEmpty || note.note!.isNotEmpty) {
-              notes.add(result);
+              notes.insert(0, result);
               setState(() {});
             }
           }
@@ -77,6 +78,20 @@ class _HomePageState extends State<HomePage> {
                 focusNode: searchFocusNode,
                 onChanged: (value) {
                   // print(value);
+                  if (value.isNotEmpty) {
+                    isSearching = true;
+                    var searchResult = notes
+                        .where((note) =>
+                            note.title!
+                                .toLowerCase()
+                                .contains(value.toLowerCase()) ||
+                            note.note!
+                                .toLowerCase()
+                                .contains(value.toLowerCase()))
+                        .toList();
+
+                    notes = searchResult;
+                  }
                   setState(() {});
                 },
                 decoration: InputDecoration(

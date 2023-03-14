@@ -24,7 +24,12 @@ class NotePage extends StatelessWidget {
         actions: [
           TextButton(
               onPressed: () {
-                Navigator.pop(context);
+                var note = Note(
+                  title: titleController.text,
+                  note: noteController.text,
+                  updatedAt: DateTime.now(),
+                );
+                Navigator.pop(context, note);
                 // remove it later.
               },
               child: const Text("Save")),

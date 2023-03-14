@@ -141,27 +141,37 @@ class _HomePageState extends State<HomePage> {
                   )
                 : Expanded(
                     child: ListView.builder(
-                        itemCount: notes.length,
-                        itemBuilder: (context, index) => Card(
-                              // margin: const EdgeInsets.only(top: 20.0),
-                              child: ListTile(
-                                title: Text(notes[index].title ?? ""),
-                                subtitle: Text(
-                                  notes[index].note ?? "",
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
+                      itemCount: notes.length,
+                      itemBuilder: (context, index) => Card(
+                        // margin: const EdgeInsets.only(top: 20.0),
+                        child: ListTile(
+                          title: Text(notes[index].title ?? ""),
+                          subtitle: Text(
+                            notes[index].note ?? "",
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          onTap: () async {
+                            var updatedNote = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => NotePage(
+                                  note: notes[index],
                                 ),
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => NotePage(
-                                                note: notes[index],
-                                              )));
-                                },
-                                minVerticalPadding: 10.0,
                               ),
-                            )),
+                            );
+                            if (updatedNote != null) {
+                              // removing the old note.
+                              allNotes.remove(notes[index]);
+                              // adding updated note
+                              allNotes.insert(0, updatedNote);
+                              setState(() {});
+                            }
+                          },
+                          minVerticalPadding: 10.0,
+                        ),
+                      ),
+                    ),
                   )
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/models/note.dart';
 import 'package:notes_app/views/pages/add_note_page.dart';
+import 'package:notes_app/views/pages/note_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,31 +14,45 @@ class _HomePageState extends State<HomePage> {
   final searchController = TextEditingController();
   final searchFocusNode = FocusNode();
   var isSearching = false;
-  List<Note> notes = [];
-  /*Note(
+  List<Note> allNotes = [
+    Note(
         title: "Note 1",
         note:
-            "This is my first note. I am a boy. My name is Shaikh Mohd Raza Mohd Rafique. I am a third year computer engineering student.",
+            "This is my first note. I am a boy. My name is Shaikh Mohd Raza Mohd Rafique.",
         updatedAt: DateTime.now()),
     Note(
         title: "Note 2",
         note:
-            "This is my second note. I am a boy. My name is Shaikh Mohd Raza Mohd Rafique. I am a third year computer engineering student.",
+            "This is my second note. I am a boy. I am a third year computer engineering student.",
         updatedAt: DateTime.now()),
     Note(
         title: "Note 3",
         note:
-            "This is my third note. I am a boy. My name is Shaikh Mohd Raza Mohd Rafique. I am a third year computer engineering student.",
+            "My name is Shaikh Mohd Raza Mohd Rafique. I am a third year computer engineering student.",
         updatedAt: DateTime.now()),
     Note(
         title: "Note 4",
         note:
             "This is my fourth note. I am a boy. My name is Shaikh Mohd Raza Mohd Rafique. I am a third year computer engineering student.",
         updatedAt: DateTime.now()),
-  ];*/
+  ];
 
   @override
   Widget build(BuildContext context) {
+    List<Note> notes;
+    if (isSearching) {
+      notes = allNotes
+          .where((note) =>
+              note.title!
+                  .toLowerCase()
+                  .contains(searchController.text.toLowerCase()) ||
+              note.note!
+                  .toLowerCase()
+                  .contains(searchController.text.toLowerCase()))
+          .toList();
+    } else {
+      notes = allNotes;
+    }
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -80,18 +95,10 @@ class _HomePageState extends State<HomePage> {
                   // print(value);
                   if (value.isNotEmpty) {
                     isSearching = true;
-                    var searchResult = notes
-                        .where((note) =>
-                            note.title!
-                                .toLowerCase()
-                                .contains(value.toLowerCase()) ||
-                            note.note!
-                                .toLowerCase()
-                                .contains(value.toLowerCase()))
-                        .toList();
-
-                    notes = searchResult;
+                  } else {
+                    isSearching = false;
                   }
+                  // (value.isNotEmpty)?isSearching=true:isSearching=false;
                   setState(() {});
                 },
                 decoration: InputDecoration(
@@ -126,8 +133,10 @@ class _HomePageState extends State<HomePage> {
               height: 20.0,
             ),
             notes.isEmpty
-                ? const Text(
-                    "You haven't added a note yet\nPress + to add a note.",
+                ? Text(
+                    isSearching
+                        ? "Note not found"
+                        : "You haven't added a note yet\nPress + to add a note.",
                     textAlign: TextAlign.center,
                   )
                 : Expanded(
@@ -142,7 +151,14 @@ class _HomePageState extends State<HomePage> {
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => NotePage(
+                                                note: notes[index],
+                                              )));
+                                },
                                 minVerticalPadding: 10.0,
                               ),
                             )),

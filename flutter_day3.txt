@@ -1,5 +1,19 @@
 To create our own model we simply create a folder named as "models" in our lib folder. Then we create different files for different models.
 
+title: Text(notes[index].title ?? ""),
+it means if the value of notes[index].title is null then take right hand side value i.e empty string.
+
+HOW TO NAVIGATE FROM ONE PAGE TO ANOTHER
+(you can refer vid no 7 from 1:36:00 as well)
+Forward navigation => Navigator.push(context,MaterialPageRoute(builder: (context) => const AddNotePage()));
+When a route is pushed to ask the user for a value, the value can be returned via the [pop] method's result parameter.
+Methods that push a route return a [Future]. The Future resolves when the route is popped and the [Future]'s value is the [pop] method's result parameter.
+
+Backward navigation => Navigator.pop(context) 
+{you can also send date just by passing second argument in pop() and that will be accessable in previous page from where you called that page.}
+
+We also saw async() function.
+
 In this vid we saw the following widgets and properties
 1) OutlineInputBorder()
     This is the value for focusedBorder property of InputDecoration() widget
@@ -35,3 +49,5 @@ In this vid we saw the following widgets and properties
 13) overflow: TextOverflow.ellipsis,
     in Text()
 
+14) floatingActionButton:
+    property of AppBar()

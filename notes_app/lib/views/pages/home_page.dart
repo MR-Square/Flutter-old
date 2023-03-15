@@ -17,23 +17,19 @@ class _HomePageState extends State<HomePage> {
   List<Note> allNotes = [
     Note(
         title: "Note 1",
-        note:
-            "This is my first note. I am a boy. My name is Shaikh Mohd Raza Mohd Rafique.",
+        note: "This is my first note.",
         updatedAt: DateTime.now()),
     Note(
         title: "Note 2",
-        note:
-            "This is my second note. I am a boy. I am a third year computer engineering student.",
+        note: "This is my second note.",
         updatedAt: DateTime.now()),
     Note(
         title: "Note 3",
-        note:
-            "My name is Shaikh Mohd Raza Mohd Rafique. I am a third year computer engineering student.",
+        note: "My name is Shaikh Mohd Raza Mohd Rafique.",
         updatedAt: DateTime.now()),
     Note(
         title: "Note 4",
-        note:
-            "This is my fourth note. I am a boy. My name is Shaikh Mohd Raza Mohd Rafique. I am a third year computer engineering student.",
+        note: "This is my fourth note.",
         updatedAt: DateTime.now()),
   ];
 
@@ -92,7 +88,6 @@ class _HomePageState extends State<HomePage> {
                 controller: searchController,
                 focusNode: searchFocusNode,
                 onChanged: (value) {
-                  // print(value);
                   if (value.isNotEmpty) {
                     isSearching = true;
                   } else {
@@ -145,14 +140,19 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) => Card(
                         // margin: const EdgeInsets.only(top: 20.0),
                         child: ListTile(
-                          title: Text(notes[index].title ?? ""),
+                          title: Text(
+                            notes[index].title ?? "",
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           subtitle: Text(
                             notes[index].note ?? "",
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                           ),
                           onTap: () async {
-                            var updatedNote = await Navigator.push(
+                            var result = await Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => NotePage(
@@ -160,11 +160,21 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             );
-                            if (updatedNote != null) {
-                              // removing the old note.
-                              allNotes.remove(notes[index]);
-                              // adding updated note
-                              allNotes.insert(0, updatedNote);
+
+                            if (result != null) {
+                              if (result["note"] != null) {
+                                Note updatedNote = result["note"];
+                                if (updatedNote.title != notes[index].title ||
+                                    updatedNote.note != notes[index].note) {
+                                  // removing the old note.
+                                  allNotes.remove(notes[index]);
+                                  // adding updated note
+                                  allNotes.insert(0, updatedNote);
+                                }
+                              } else if (result["delete"] != null) {
+                                // deleting the note.
+                                allNotes.remove(notes[index]);
+                              }
                               setState(() {});
                             }
                           },

@@ -15,24 +15,55 @@ class NotePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () {
-              print("Deleted successfully");
-            },
-            icon: const Icon(Icons.delete)),
+          icon: const Icon(Icons.delete),
+          onPressed: () async {
+            var result = await showDialog(
+              barrierDismissible: false,
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: const Text("Do you want to delete this note?"),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text("No"),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context, true);
+                        // it will pass true to showDialog()
+                      },
+                      child: const Text("Yes"),
+                    ),
+                  ],
+                );
+              },
+            );
+            if (result != null) {
+              if (result) {
+                // delete this note
+                // ignore: use_build_context_synchronously
+                Navigator.pop(context, {"note": null, "delete": true});
+              }
+            }
+          },
+        ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         foregroundColor: Colors.grey,
         actions: [
           TextButton(
-              onPressed: () {
-                var note = Note(
-                  title: titleController.text,
-                  note: noteController.text,
-                  updatedAt: DateTime.now(),
-                );
-                Navigator.pop(context, note);
-                // remove it later.
-              },
-              child: const Text("Save")),
+            onPressed: () {
+              var note = Note(
+                title: titleController.text,
+                note: noteController.text,
+                updatedAt: DateTime.now(),
+              );
+              Navigator.pop(context, {"note": note, "delete": null});
+            },
+            child: const Text("Save"),
+          ),
         ],
         elevation: 0,
       ),

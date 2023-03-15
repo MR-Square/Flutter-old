@@ -2,3 +2,17 @@ Title :
 
 leading:
 property of AppBar()
+
+
+showDialog(
+    context: context,
+    builder: (context){}
+)
+
+barrierDismissible:
+property of showDialog()
+
+AlertDialog(
+    title: ,
+    action:[],
+)

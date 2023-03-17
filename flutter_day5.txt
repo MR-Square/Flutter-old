@@ -2,3 +2,13 @@
 
 obscureText: ,
 property of TextField()
+
+To add firebase in your app you can do the following things:
+i.   Go to the lik: https://firebase.google.com/
+ii.  Click on "Get started" button
+iii. Select any one of the given option(IOS,Android,Web,Unity).
+iv.  To get your android package name go to: android\app\src\main\AndroidMainfest.xml
+v.   There you will get package="" 
+vi.  Add this package name in android package name field.You can also add nick name for your app(optional field).
+vii. Then download the google services json file at project_folder\android\app
+viii. Perform the "Add firebase SDK" step

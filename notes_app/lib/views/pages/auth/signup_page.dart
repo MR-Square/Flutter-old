@@ -18,7 +18,7 @@ class _SignupPageState extends State<SignupPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const Text(
-              "Signup",
+              "Sign up",
               style: TextStyle(
                 fontSize: 30.0,
                 fontWeight: FontWeight.w500,
